@@ -40,7 +40,7 @@ module Opener
     # @return [String]
     #
     def command
-      return "python #{kernel} #{options[:args].join(' ')}"
+      return "python -E -OO #{kernel} #{options[:args].join(' ')}"
     end
 
     ##
