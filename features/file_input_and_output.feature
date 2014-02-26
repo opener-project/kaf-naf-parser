@@ -8,8 +8,6 @@ Feature: Using files as input and output
     And I put it through the kernel
     Then the output should match the fixture "<output_file>"
   Examples:
-    | language | input_file            | output_file            |
-    | French   | fr_positive_input.kaf | fr_positive_output.kaf |
-    | French   | fr_negative_input.kaf | fr_negative_output.kaf |
-    | Dutch    | nl_positive_input.kaf | nl_positive_output.kaf |
-    | Dutch    | nl_negative_input.kaf | nl_negative_output.kaf |
+    | input_file | output_file |
+    | input.kaf  | output.naf  |
+    | input.naf  | output.kaf  |
