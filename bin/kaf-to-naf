@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/opener/kaf_naf_parser'
+
+cli = Opener::KafNafParser::CLI.new(:args => ARGV, :conversion=>"to-naf")
+
+cli.run(STDIN.tty? ? nil : STDIN.read)
