@@ -1,5 +1,7 @@
 require File.expand_path('../lib/opener/kaf_naf_parser/version', __FILE__)
 
+generated = Dir.glob('core/site-packages/pre_build/**/*')
+
 Gem::Specification.new do |gem|
   gem.name                  = 'kaf-naf-parser'
   gem.version               = Opener::KafNafParser::VERSION
@@ -9,9 +11,10 @@ Gem::Specification.new do |gem|
   gem.homepage              = "http://github.com/cltl/KafNafParserPy"
   gem.required_ruby_version = '>= 1.9.2'
 
-  gem.files       = (`git ls-files`.split("\n")).sort
+  gem.files       = (`git ls-files`.split("\n") + generated).sort
   gem.executables = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files  = gem.files.grep(%r{^(test|spec|features)/})
+  gem.extensions  = ['ext/hack/Rakefile']
 
   gem.add_dependency 'builder'
   gem.add_dependency 'sinatra', '~>1.4.2'
