@@ -1,29 +1,43 @@
 require 'bundler/gem_tasks'
-require 'opener/build-tools'
-require 'opener/build-tools/tasks/java'
+require 'opener/build-tools/tasks/python'
+require 'opener/build-tools/tasks/clean'
 
-include Opener::BuildTools::Requirements
-include Opener::BuildTools::Java
+require_relative 'ext/hack/support'
 
-CORE_DIRECTORY = File.expand_path('../core', __FILE__)
+desc 'Lists all the files of the Gemspec'
+task :files do
+  gemspec = Gem::Specification.load('kaf-naf-parser.gemspec')
+
+  puts gemspec.files.sort
+end
 
 desc 'Verifies the requirements'
 task :requirements do
-  require_executable('java')
-  require_version('java', java_version, '1.7.0')
-  require_executable('mvn')
+  verify_requirements
 end
 
-desc 'Alias for java:compile'
-task :compile => [:requirements, 'java:compile']
+desc 'Cleans up the repository'
+task :clean => [
+  'python:clean:bytecode',
+  'python:clean:packages',
+  'clean:tmp',
+  'clean:gems'
+]
+
+desc 'Alias for python:compile'
+task :compile => 'python:compile'
 
 desc 'Runs the tests'
 task :test => :compile do
-  sh 'cucumber features'
+  sh('cucumber features')
 end
 
-desc 'Cleans the repository'
-task :clean => ['java:clean:packages']
+desc 'Performs preparations for building the Gem'
+task :before_build => [:requirements, 'python:clean:bytecode'] do
+  path = File.join(PYTHON_SITE_PACKAGES, 'pre_build')
 
-task :build   => :compile
+  install_python_packages(PRE_BUILD_REQUIREMENTS, path)
+end
+
+task :build   => :before_build
 task :default => :test
