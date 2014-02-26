@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.extensions  = ['ext/hack/Rakefile']
 
   gem.add_dependency 'builder'
-  gem.add_dependency 'sinatra', '~>1.4.2'
+  gem.add_dependency 'sinatra', '~>1.4.3'
   gem.add_dependency 'httpclient'
   gem.add_dependency 'opener-build-tools'
   gem.add_dependency 'uuidtools'
