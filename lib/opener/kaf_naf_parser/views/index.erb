@@ -11,7 +11,6 @@
 
     <p>
       <pre>kaf-naf-parser-server start</pre>
-      <pre></pre>
     </p>
 
     <h2>Try the webservice</h2>
@@ -21,10 +20,19 @@
 
     <form action="<%=url("/")%>" method="POST">
       <div>
-        <label for="input"/>Type your text here*</label>
+        <label for="input">Type your text here*</label>
         <br/>
 
         <textarea name="input" id="text" rows="10" cols="50"/></textarea>
+      </div>
+
+      <div>
+        <label for="conversion">Conversion</label>
+        <br/>
+        <select name="conversion" id="conversion">
+          <option value="to-kaf">To KAF</option>
+          <option value="to-naf">To NAF</option>
+        </select>
       </div>
 
       <% 10.times do |t| %>
@@ -65,7 +73,10 @@
     <dl>
       <dt>text*</dt>
       <dd>The input text in KAF format. Sample KAF input:</dd>
-      <pre></pre>
+
+      <dt>conversion</dt>
+      <dd>The conversion the webservice should make. it defaults to "to-kaf".
+      The possible options are "to-kaf" and "to-naf".</dd>
 
       <dt>callbacks</dt>
       <dd>

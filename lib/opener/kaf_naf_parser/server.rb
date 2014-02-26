@@ -10,7 +10,7 @@ module Opener
     class Server < Webservice
       set :views, File.expand_path('../views', __FILE__)
       text_processor KafNafParser
-      accepted_params :input
+      accepted_params :input, :conversion
     end # Server
   end # KafNafParser
 end # Opener
