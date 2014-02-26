@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<NAF xml:lang="nl">
+  <nafHeader>
+    <linguisticProcessors layer="text">
+      <lp name="SentenceTokenizer" timestamp="*" version="2.0"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="terms">
+      <lp name="SentenceTokenizer" timestamp="*" version="2.0"/>
+      <lp timestamp="*" version="4nov2013_1.0" name="VUA polarity tagger multilanguage"/>
+    </linguisticProcessors>
+  </nafHeader>
+  <text>
+    <wf para="1" sent="1" id="w_1">Heerlijk</wf>
+    <wf para="1" sent="1" id="w_2">geniet</wf>
+    <wf para="1" sent="1" id="w_3">van</wf>
+    <wf para="1" sent="1" id="w_4">de</wf>
+    <wf para="1" sent="1" id="w_5">eerste</wf>
+    <wf para="1" sent="1" id="w_6">zonnig</wf>
+    <wf para="1" sent="1" id="w_7">dag</wf>
+    <wf para="1" sent="1" id="w_8">op</wf>
+    <wf para="1" sent="1" id="w_9">het</wf>
+    <wf para="1" sent="1" id="w_10">groot</wf>
+    <wf para="1" sent="1" id="w_11">terras</wf>
+    <wf para="1" sent="1" id="w_12">aan</wf>
+    <wf para="1" sent="1" id="w_13">de</wf>
+    <wf para="1" sent="1" id="w_14">Amstel</wf>
+    <wf para="1" sent="1" id="w_15">goed</wf>
+    <wf para="1" sent="1" id="w_16">service</wf>
+    <wf para="1" sent="1" id="w_17">.</wf>
+  </text>
+  <terms>
+    <term lemma="heerlijk" type="open" pos="G" id="t_1">
+      <span>
+        <target id="w_1"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term lemma="geniet" type="open" id="t_2">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term lemma="van" type="open" id="t_3">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term lemma="de" type="open" id="t_4">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term lemma="eerste" type="open" id="t_5">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term lemma="zonnig" type="open" pos="G" id="t_6">
+      <span>
+        <target id="w_6"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term lemma="dag" type="open" id="t_7">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term lemma="op" type="open" id="t_8">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term lemma="het" type="open" id="t_9">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term lemma="groot" type="open" id="t_10">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term lemma="terras" type="open" id="t_11">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term lemma="aan" type="open" id="t_12">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+    <term lemma="de" type="open" id="t_13">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term lemma="amstel" type="open" id="t_14">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+    <term lemma="goed" type="open" pos="G" id="t_15">
+      <span>
+        <target id="w_15"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term lemma="service" type="open" id="t_16">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term lemma="." type="open" id="t_17">
+      <span>
+        <target id="w_17"/>
+      </span>
+    </term>
+  </terms>
+</NAF>

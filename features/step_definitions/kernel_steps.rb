@@ -3,10 +3,11 @@ Given /^the fixture file "(.*?)"$/ do |filename|
   @filename = filename
 end
 
-Given /^I put it through the kernel$/ do
+Given /^I convert to "(.*?)"$/ do |conversion|
   @tmp_filename = "output_#{rand(1000)}_#{@filename}"
   @output       = tmp_file(@tmp_filename)
   input         = File.read(@input)
+  kernel        = Opener::KafNafParser.new(:conversion=>conversion)
   output, *_    = Open3.capture3(kernel.command, :stdin_data => input)
 
   File.open(@output, 'w') do |handle|

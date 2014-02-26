@@ -5,9 +5,9 @@ Feature: Using files as input and output
 
   Scenario Outline: Tokenize the text
     Given the fixture file "<input_file>"
-    And I put it through the kernel
+    And I convert to "<conversion>"
     Then the output should match the fixture "<output_file>"
   Examples:
-    | input_file | output_file |
-    | input.kaf  | output.naf  |
-    | input.naf  | output.kaf  |
+    | input_file | output_file | conversion |
+    | input.kaf  | output.naf  | to-naf     |
+    | input.naf  | output.kaf  | to-kaf     |
