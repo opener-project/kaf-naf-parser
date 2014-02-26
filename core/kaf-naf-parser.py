@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from KafNafParserPy import KafNafParser
+from KafNafParser import KafNafParser
 import sys, getopt
 
 def main(argv):
