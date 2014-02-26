@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 
+# This updates the load path to ensure that the local site-packages directory
+# can be used to load packages (e.g. a locally installed copy of lxml).
+
+import sys, getopt, os
+
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site-packages/pre_build'))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site-packages/pre_install'))
+
 from KafNafParser import KafNafParser
-import sys, getopt
 
 def main(argv):
   conversion = ""
