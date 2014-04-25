@@ -22,7 +22,7 @@ kaf-naf-parser-server
 
 It works like this:
 
-```shell
+```
 cat some_kaf.kaf | kaf-to-naf > output.naf
 cat some_naf.naf | naf-to-kaf > output.kaf
 
@@ -31,14 +31,14 @@ cat some_kaf.kaf | kaf-naf-parser --tonaf > output.naf
 
 The webservice can be started like this:
 
-```shell
+```
 naf-to-kaf-parser-server
 ```
 And can then be accessed at: http://localhost:9292
 
 Easiest way to install the gem:
 
-```shell
+```
 git clone git@github.com:opener-project/kaf-naf-parser.git
 cd kaf-naf-parser
 rake install
