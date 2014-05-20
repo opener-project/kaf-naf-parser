@@ -1,7 +1,7 @@
 require File.expand_path('../lib/opener/kaf_naf_parser/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name                  = 'kaf-naf-parser'
+  gem.name                  = 'opener-kaf-naf-parser'
   gem.version               = Opener::KafNafParser::VERSION
   gem.authors               = ['ruben.izquierdobevia@vu.nl','development@olery.com']
   gem.summary               = 'Parser to translate KAF to NAF and back.'
