@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.description           = gem.summary
   gem.homepage              = "http://github.com/cltl/KafNafParserPy"
   gem.required_ruby_version = '>= 1.9.2'
+  gem.extensions  = ['ext/hack/Rakefile']
 
   gem.files = Dir.glob([
     'core/packages/**/*',
