@@ -20,7 +20,8 @@ Gem::Specification.new do |gem|
     '*.gemspec',
     'LICENSE',
     '*_requirements.txt',
-    'README.md'
+    'README.md',
+    'exec/**/*'
   ]).select { |file| File.file?(file) }
 
   gem.executables = Dir.glob('bin/*').map { |file| File.basename(file) }
@@ -32,6 +33,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'uuidtools'
   gem.add_dependency 'opener-webservice'
   gem.add_dependency 'puma'
+  gem.add_dependency 'opener-daemons'
+  gem.add_dependency 'opener-core', ['>= 0.1.2']
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'cucumber'
