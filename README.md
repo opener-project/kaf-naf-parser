@@ -1,7 +1,3 @@
-replace:
-kaf-naf-parser
-kaf-naf-parser
-
 Introduction
 ------------
 
