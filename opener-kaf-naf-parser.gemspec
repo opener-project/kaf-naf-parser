@@ -8,10 +8,9 @@ Gem::Specification.new do |gem|
   gem.description           = gem.summary
   gem.homepage              = "http://github.com/cltl/KafNafParserPy"
   gem.required_ruby_version = '>= 1.9.2'
-  gem.extensions  = ['ext/hack/Rakefile']
+  gem.extensions            = ['ext/hack/Rakefile']
 
   gem.files = Dir.glob([
-    'core/packages/**/*',
     'core/*',
     'ext/**/*',
     'lib/**/*',
@@ -20,7 +19,8 @@ Gem::Specification.new do |gem|
     'LICENSE',
     '*_requirements.txt',
     'README.md',
-    'exec/**/*'
+    'exec/**/*',
+    'task/*'
   ]).select { |file| File.file?(file) }
 
   gem.executables = Dir.glob('bin/*').map { |file| File.basename(file) }
@@ -28,7 +28,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'builder'
   gem.add_dependency 'sinatra', '~>1.4.3'
   gem.add_dependency 'httpclient'
-  gem.add_dependency 'opener-build-tools'
   gem.add_dependency 'uuidtools'
   gem.add_dependency 'opener-webservice'
   gem.add_dependency 'puma'
