@@ -40,7 +40,7 @@ module Opener
     # @return [String]
     #
     def command
-      return "python -E -OO #{kernel} #{options[:args].join(' ')} #{conversion}"
+      return "python -E #{kernel} #{options[:args].join(' ')} #{conversion}"
     end
 
     def conversion
