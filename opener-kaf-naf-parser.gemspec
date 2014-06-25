@@ -10,13 +10,15 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 1.9.2'
   gem.extensions            = ['ext/hack/Rakefile']
 
+  gem.license = 'Apache 2.0'
+
   gem.files = Dir.glob([
     'core/*',
     'ext/**/*',
     'lib/**/*',
     'config.ru',
     '*.gemspec',
-    'LICENSE',
+    'LICENSE.txt',
     '*_requirements.txt',
     'README.md',
     'exec/**/*',
