@@ -8,7 +8,7 @@ Given /^I convert to "(.*?)"$/ do |conversion|
   @output       = tmp_file(@tmp_filename)
   input         = File.read(@input)
   kernel        = Opener::KafNafParser.new(:conversion=>conversion)
-  output, *_    = Open3.capture3(kernel.command, :stdin_data => input)
+  output        = kernel.run(input)
 
   File.open(@output, 'w') do |handle|
     handle.write(output)

@@ -1,8 +1,9 @@
 require 'open3'
-require 'optparse'
+require 'slop'
 
 require_relative 'kaf_naf_parser/version'
 require_relative 'kaf_naf_parser/cli'
+require_relative 'kaf_naf_parser/server'
 
 module Opener
   ##
@@ -20,8 +21,8 @@ module Opener
     # @return [Hash]
     #
     DEFAULT_OPTIONS = {
-      :args => [],
-      :conversion => "to-kaf"
+      :args       => [],
+      :conversion => 'to-kaf'
     }.freeze
 
     ##
@@ -40,25 +41,48 @@ module Opener
     # @return [String]
     #
     def command
-      return "python -E #{kernel} #{options[:args].join(' ')} #{conversion}"
+      args = options[:args].join(' ')
+
+      return "python -E #{kernel} #{args} #{conversion}"
     end
 
+    ##
+    # @return [String]
+    #
     def conversion
       "--#{options[:conversion].gsub(/-/,'')}"
     end
 
     ##
-    # Processes the input and returns an Array containing the output of STDOUT,
-    # STDERR and an object containing process information.
+    # Processes a given input KAF/NAF document and returns a new document in the
+    # opposite format.
     #
-    # @param [String] input The text of which to detect the language.
-    # @return [Array]
+    # @param [String] input
+    # @return [String]
     #
     def run(input)
-      return Open3.capture3(command, :stdin_data => input)
+      stdout, stderr, process = capture(input)
+
+      raise stderr unless process.success?
+
+      return stdout
     end
 
     protected
+
+    ##
+    # capture3 method doesn't work properly with Jruby, so
+    # this is a workaround
+    #
+    def capture(input)
+      Open3.popen3(*command.split(" ")) {|i, o, e, t|
+        out_reader = Thread.new { o.read }
+        err_reader = Thread.new { e.read }
+        i.write input
+        i.close
+        [out_reader.value, err_reader.value, t.value]
+      }
+    end
 
     ##
     # @return [String]

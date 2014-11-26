@@ -1,91 +1,65 @@
 module Opener
   class KafNafParser
     ##
-    # CLI wrapper around {Opener::LanguageIdentifier} using OptionParser.
+    # CLI wrapper around {Opener::KafNafParser} using Slop.
     #
-    # @!attribute [r] options
-    #  @return [Hash]
-    # @!attribute [r] option_parser
-    #  @return [OptionParser]
+    # @!attribute [r] parser
+    #  @return [Slop]
     #
     class CLI
-      attr_reader :options, :option_parser
+      attr_reader :parser
+
+      def initialize
+        @parser = configure_slop
+      end
 
       ##
-      # @param [Hash] options
+      # @param [Array] argv
       #
-      def initialize(options = {})
-        @options = DEFAULT_OPTIONS.merge(options)
+      def run(argv = ARGV)
+        parser.parse(argv)
+      end
 
-        @option_parser = OptionParser.new do |opts|
-          opts.program_name   = 'kaf-naf-parser'
-          opts.summary_indent = '  '
+      ##
+      # @return [Slop]
+      #
+      def configure_slop
+        return Slop.new(:strict => false, :indent => 2, :help => true) do
+          banner 'Usage: kaf-naf-parser [OPTIONS]'
 
-          opts.on('-h', '--help', 'Shows this help message') do
-            show_help
-          end
+          separator <<-EOF.chomp
 
-          opts.on('-v', '--version', 'Shows the current version') do
-            show_version
-          end
+About:
 
-          opts.on('-k', '--tokaf', 'Parses input to KAF') do
-            @options[:conversion] = "to-kaf"
-          end
+    Component for converting KAF documents to NAF documents and vice-versa.
+    This command reads input from STDIN.
 
-          opts.on('-n', '--tonaf', 'Parses input to NAF') do
-            @options[:conversion] = "to-naf"
-          end
+Example:
 
-          opts.on('-l', '--log', 'Enable logging to STDERR') do
-            @options[:logging] = true
-          end
-
-          opts.separator <<-EOF
-
-Examples:
-
-  cat example.kaf | #{opts.program_name} --tonaf    # Basic usage
-  cat example.kaf | #{opts.program_name} --tonaf -l # Logs information to STDERR
+    cat some_file.kaf | kaf-naf-parser --tonaf
           EOF
-        end
-      end
 
-      ##
-      # @param [String] input
-      #
-      def run(input)
-        option_parser.parse!(options[:args])
+          separator "\nOptions:\n"
 
-        tagger = KafNafParser.new(options)
-
-        stdout, stderr, process = tagger.run(input)
-
-        if process.success?
-          puts stdout
-
-          if options[:logging] and !stderr.empty?
-            STDERR.puts(stderr)
+          on :v, :version, 'Shows the current version' do
+            abort "kaf-naf-parser v#{VERSION} on #{RUBY_DESCRIPTION}"
           end
-        else
-          abort stderr
+
+          on :k, :tokaf, 'Converts NAF to KAF'
+          on :n, :tonaf, 'Converts KAF to NAF'
+
+          run do |opts, args|
+            conversion = opts[:tonaf] ? 'to-naf' : 'to-kaf'
+            parser     = KafNafParser.new(
+              :args       => args,
+              :conversion => conversion
+            )
+
+            input = STDIN.tty? ? nil : STDIN.read
+
+            puts parser.run(input)
+          end
         end
-      end
-
-      private
-
-      ##
-      # Shows the help message and exits the program.
-      #
-      def show_help
-        abort option_parser.to_s
-      end
-
-      ##
-      # Shows the version and exits the program.
-      #
-      def show_version
-        abort "#{option_parser.program_name} v#{VERSION} on #{RUBY_DESCRIPTION}"
       end
     end # CLI
   end # KafNafParser

@@ -1,5 +1,4 @@
-Introduction
-------------
+# KAF NAF Parser
 
 This library converts KAF to NAF and NAF to KAF. It also contains a webservice
 for doing exactly this.
@@ -16,14 +15,13 @@ project at [the OpeNER portal](http://opener-project.github.io). There you can
 also find references to terms like KAF (an XML standard to represent linguistic
 annotations in texts), component, cores, scenario's and pipelines.
 
-Quick Use Example
------------------
+## Quick Use Example
 
 Installing the kaf-naf-parser can be done by executing:
 
     gem install opener-kaf-naf-parser
 
-Please bare in mind that all components in OpeNER take KAF as an input and
+Please keep in mind that all components in OpeNER take KAF as an input and
 output KAF by default.
 
 It ships with 3 command line tools and a webservice:
@@ -57,10 +55,12 @@ jobs (and write) jobs to and from Amazon SQS queues. For more information type:
 
     kaf-naf-parser-daemon -h
 
-Description of dependencies
----------------------------
+## Description of dependencies
 
-The working part of this OpeNER component is the KafNafParserPy Python library. More documentation on this library can be found here http://kyoto.let.vu.nl/~izquierdo/api/KafNafParserPy/ and at [KafNafParserPy Github Page](https://github.com/cltl/KafNafParserPy).
+The working part of this OpeNER component is the KafNafParserPy Python library.
+More documentation on this library can be found here
+http://kyoto.let.vu.nl/~izquierdo/api/KafNafParserPy/ and at
+[KafNafParserPy Github Page](https://github.com/cltl/KafNafParserPy).
 
 This component runs best if you run it in an environment suited for OpeNER
 components. You can find an installation guide and helper tools in the
@@ -74,21 +74,18 @@ At least you need the following system setup:
 * Ruby 1.9.3 or newer
 * Python 2.6
 
-Where to go from here
----------------------
+## Where to go from here
 
 * [Check the project website](http://opener-project.github.io)
 * [Checkout the webservice](http://opener.olery.com/kaf-naf-parser)
 
-Report problem/Get help
------------------------
+## Report problem/Get help
 
 If you encounter problems, please email support@opener-project.eu or leave an
 issue in the
 [issue tracker](https://github.com/opener-project/kaf-naf-parser/issues).
 
-Contributing
-------------
+## Contributing
 
 1. Fork it <http://github.com/opener-project/kaf-naf-parser/fork>
 2. Create your feature branch (`git checkout -b my-new-feature`)

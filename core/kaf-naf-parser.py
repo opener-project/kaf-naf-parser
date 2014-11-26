@@ -8,7 +8,7 @@ this_folder = os.path.dirname(os.path.realpath(__file__))
 # can be used to load packages (e.g. a locally installed copy of lxml).
 sys.path.append(os.path.join(this_folder, 'site-packages/pre_install'))
 
-from KafNafParser import KafNafParser
+from KafNafParserPy import KafNafParser
 
 def main(argv):
   conversion = ""

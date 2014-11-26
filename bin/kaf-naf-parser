@@ -2,7 +2,7 @@
 
 require_relative '../lib/opener/kaf_naf_parser'
 
-cli = Opener::KafNafParser::CLI.new(:args => ARGV)
+cli = Opener::KafNafParser::CLI.new
 
-cli.run(STDIN.tty? ? nil : STDIN.read)
+cli.run
 
