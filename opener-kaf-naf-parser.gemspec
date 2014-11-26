@@ -32,6 +32,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'opener-core', '~> 2.2'
 
   gem.add_dependency 'builder'
+  gem.add_dependency 'slop', '~> 3.5'
 
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'cucumber'
