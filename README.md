@@ -73,6 +73,8 @@ At least you need the following system setup:
 
 * Ruby 1.9.3 or newer
 * Python 2.6
+* libarchive (for running the tests and such), on Debian/Ubuntu based systems
+  this can be installed using `sudo apt-get install libarchive-dev`
 
 ## Where to go from here
 
